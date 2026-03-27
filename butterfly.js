@@ -55,10 +55,10 @@ function mainDraw(opacity = 255, scaleFactor = 1) {
   drawingContext.restore();
 
 }
-// Below is butterfly wings: instead of draw all the wings, i decided to break it dowwn into different layers in order to have more control over the morphin and blending. 
-// all the wings are drawn quite the same, the only difference is the height, noise blending, multiplier and the gradient. I will explain the first one in detail, and then the rest should be pretty self-explanatory.
-// draw gradient -> begin shape -> loop through theta from 0 to 360 -> calculate noise (n) (static and dynamic: also check the delay.js to see further on this interaction) -> calculate the radius with the noise and the height -> calculate x and y with the radius -> only draw the vertex if it is y < 0 and x<0 
-//
+// Below are butterfly wings: instead of drawing all the wings, I decided to break them down into different layers in order to have more control over the morphing and blending. 
+// all the wings are drawn quite the same, the only difference is the height, noise blending, multiplier, and the gradient. I will explain the first one in detail, and then the rest should be pretty self-explanatory.
+// draw gradient -> begin shape -> loop through theta from 0 to 360 -> calculate noise (n) (static and dynamic: also check the delay.js to see further on this interaction) -> calculate the radius with the noise and the height 
+//-> calculate x and y with the radius -> only draw the vertex if it is y < 0 and x<0 //
 function drawRichTop1() {
     let gradientHeight = 0.3*circleWidth100/2;
     let grad = drawingContext.createLinearGradient(-10, -gradientHeight, 0,0); 
@@ -330,7 +330,6 @@ function drawRichBottom() {
     let A = heights[petalIndex]; 
     let r = A * sin(2 * theta) * (0.7 + n * 0.2);
 
-    // 2. NOW you can safely modify it.
     r *= radiusMultiplier2;
 
     let x = r * cos(theta);
